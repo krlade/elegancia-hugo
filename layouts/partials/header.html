@@ -1,19 +1,32 @@
-<nav class="navbar">
-    <ul>
-    {{ $currentPage := . }}
-    <li><i class="fa fa-moon-o" id="dark" aria-hidden="true"></i></li>
-    <li id="title"> {{ .Site.Title }} </li>
-
-    {{with .Site.GetPage "contact" }}
-    <li><a href="{{.Site.BaseURL}}#contact">Contact</a></li>
-    {{end}}
-    {{ range .Site.Menus.main }}
-    <li>
-    <a class="sidebar-nav-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
-    </li>
-    {{ end }}
-    {{with .Site.GetPage "about" }}
-    <li><a href="{{.Site.BaseURL}}#about">About</a></li>
-    {{end}}
-    </ul>
+<nav>
+    <div class="area">
+        {{ $currentPage := . }}
+        <label for="hamburger">&#9776;</label>
+        <input type="checkbox" id="hamburger"/>
+        <ol id="menu">
+            <li id="title">
+                <a href="{{.Site.BaseURL }}">{{ .Site.Title }}</a>
+            </li>
+            {{ with .Site.GetPage "about" }}
+            <li>
+                <a href="{{.Site.BaseURL }}#about">About</a>
+            </li>
+            {{ end }}
+            {{ range .Site.Menus.main }}
+            <li>
+                <a class="sidebar-nav-item{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{ end }}"
+                   href="{{ .URL }}"
+                   title="{{ .Title }}">{{ .Name }}</a>
+            </li>
+            {{ end }}
+            {{ with .Site.GetPage "contact" }}
+            <li>
+                <a href="{{.Site.BaseURL }}#contact">Contact</a>
+            </li>
+            {{ end }}
+            <li>
+                <i class="fa fa-moon-o" id="dark" aria-hidden="true"></i>
+            </li>
+        </ol>
+    </div>
 </nav>

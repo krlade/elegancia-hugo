@@ -1,28 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    {{ partial "head.html" . }}
-  </head>
-  <body>
-      {{ partial "header.html" . }}
-
-      {{with .Site.GetPage "about" }}
-      <div id="about">
-        {{.Content}}
-      </div>
-      {{end}}
-      {{if .Site.Params.ShowBlog}}
-        <div class="gray-bg">
-        </div>
-      {{end}}
-      {{with .Site.GetPage "contact" }}
-      <div>
-        {{.Content}}
-      </div>
-      {{end}}
-  
-      {{ partial "footer.html" . }}
-  
+    <head>{{ partial "head.html" . }}</head>
+    <body>
+        {{ partial "header.html" . }}
+        {{ with .Site.GetPage "about" }}
+        <div id="about">{{.Content }}</div>
+        {{ end }}
+        {{ if .Site.Params.ShowBlog }}
+        <div class="gray-bg"></div>
+        {{ end }}
+        {{ with .Site.GetPage "contact" }}
+        <div>{{.Content }}</div>
+        {{ end }}
+        {{ partial "footer.html" . }}
     </body>
 </html>
-
