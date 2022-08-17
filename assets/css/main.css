@@ -4,38 +4,75 @@ body {
   margin: 0;
 }
 
-.navbar {
-  background-color: white;
+nav {
   position: sticky;
 	top: 0;
-	width: 100%;
-  display:flex;
+  width: 100%;
+  background-color: white;
+  height: auto;
   box-shadow: 1px 1px 5px gray;
 }
+
+nav label {
+  position:static;
+  float: right;
+  right: 5px;
+  font-size:x-large;
+  z-index: 1;
+}
+
+.area {
+  width: 1280px;
+  max-width: 100%;
+  margin: 0 auto 0 auto;
+}
+
+nav a,i, label {
+  font-size: x-large;
+  padding-right: 8px;
+  color: black;
+  /* TODO: make the font configurable in config.toml */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-decoration: none;
+}
+
+#menu {
+    margin: 0;
+    padding: 0;
+    list-style-type:none;
+  }
+
 @media all and (max-width: 640px) {
+  #menu li:not(#title), #hamburger { 
+    display: none;
+  }
+  
+  #hamburger:checked ~ #menu li:not(#title) {
+  display:block;
+}
+  
 
 }
 @media all and (min-width: 641px) {
-.navbar li {
-  float: right;
-  padding: 10px;
-  list-style-type: none;
-  color: black;
-  font-size:large;
-}
+  #menu {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  #menu li { 
+    display:inline; 
+  }
 
-.navbar ul {
-  margin: 0 auto 0 auto;
-  width: 1280px;
-  padding-left: 0;
-}
+  #title {
+  position: fixed;
+  left: 8px;
+  }
 
-#title {
-  font-size:x-large;
-  float: left;
-  padding: 8px 0 8px 0;
-}
-
+  nav label, #hamburger {
+    display: none;
+  }
+  
+  
 }
 
 div p {
@@ -57,3 +94,4 @@ div img {
   margin: 0 auto 0 auto;
   width: 100%;
 }
+
