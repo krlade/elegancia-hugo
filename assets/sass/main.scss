@@ -11,14 +11,17 @@ nav {
   background-color: white;
   height: auto;
   box-shadow: 1px 1px 5px gray;
-}
-
-nav label {
-  position: static;
-  float: right;
-  right: 5px;
-  font-size:x-large;
-  z-index: 1;
+  transition: height .35s ease;
+  
+  label {
+    position: static;
+    float: right;
+    right: 1px;
+    z-index: 1;
+    font-size: x-large;
+    padding: $mobilePadding;
+    color: $baseColor;
+  }
 }
 
 .area {
@@ -28,62 +31,84 @@ nav label {
   margin: 0 auto 0 auto;
 }
 
-nav a,i, label {
-  font-size: x-large;
-  padding-right: 8px;
-  color: black;
-  /* TODO: make the font configurable in config.toml */
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  text-decoration: none;
-}
+
+
+/* Style */
 
 #menu {
     margin: 0;
     padding: 0;
     list-style-type:none;
+    li {
+      a, i {
+        text-decoration: none;
+        color: $baseColor;
+      }
+    }
   }
 
+#menu li:not(#title) :hover {
+  color: $baseHoverColor;
+}
+
+#title {
+  font-size: x-large;
+  font-weight: bold;
+}
+
 @media all and (max-width: 640px) {
+  #menu {
+    li {
+      padding: $mobilePadding;
+    }
+  }
   #menu li:not(#title), #hamburger { 
     display: none;
   }
   
   #hamburger:checked ~ #menu li:not(#title) {
   display:block;
+  transition: 0.5s;
 }
   
 
 }
 @media all and (min-width: 641px) {
+  nav {
+    padding: $padding 0 $padding 0;
+  }
   #menu {
     display: flex;
     justify-content: flex-end;
-  }
-  
-  #menu li { 
+    li { 
+      padding: $padding;
+      display:inline; 
     display:inline; 
+      display:inline; 
+    }
   }
 
   #title {
-  position: absolute;
-  left: 8px;
+    position: absolute;
+    left: $padding;
+    top: -4px;
   }
 
   nav label, #hamburger {
     display: none;
   }
-  
-  
 }
 
-div p {
-  padding-top: 5px;
-  margin: 0 auto 0 auto;
-  width: 1280px;
-  max-width: 100%;
-}
-div img {
-  max-width: 80%;
+div {
+  p {
+    padding-top: 5px;
+    margin: 0 auto 0 auto;
+    width: 1280px;
+    max-width: 100%;
+  }
+  img {
+    max-width: 80%;
+  }
 }
 
 .gray-bg {
