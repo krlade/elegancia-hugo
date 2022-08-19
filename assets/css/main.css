@@ -14,7 +14,7 @@ nav {
 }
 
 nav label {
-  position:static;
+  position: static;
   float: right;
   right: 5px;
   font-size:x-large;
@@ -22,6 +22,7 @@ nav label {
 }
 
 .area {
+  position: relative;
   width: 1280px;
   max-width: 100%;
   margin: 0 auto 0 auto;
@@ -64,7 +65,7 @@ nav a,i, label {
   }
 
   #title {
-  position: fixed;
+  position: absolute;
   left: 8px;
   }
 
