@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 {{ $style := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
-<link id="load_theme" rel="stylesheet" href="{{ $style.Permalink }}" />
+<link id="load_theme" rel="stylesheet" href="{{ $style.RelPermalink }}" />
 
 <!-- css>
 <link rel="preconnect" href="https://fonts.gstatic.com">
