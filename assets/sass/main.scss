@@ -4,6 +4,13 @@ body {
   margin: 0;
 }
 
+/* variables */
+$font: {{ .Site.Params.font }};
+$baseColor: black;
+$baseHoverColor: red;
+$padding: 8px;
+$mobilePadding: 4px;
+
 nav {
   position: sticky;
 	top: 0;
@@ -40,6 +47,7 @@ nav {
     padding: 0;
     list-style-type:none;
     li {
+      font-family: $font;
       a, i {
         text-decoration: none;
         color: $baseColor;
@@ -82,8 +90,6 @@ nav {
     justify-content: flex-end;
     li { 
       padding: $padding;
-      display:inline; 
-    display:inline; 
       display:inline; 
     }
   }
