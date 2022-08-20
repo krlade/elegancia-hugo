@@ -6,10 +6,13 @@
 {{ $style :=  $styleTemplate | resources.ExecuteAsTemplate "cos.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link id="load_theme" rel="stylesheet" href="{{ $style.RelPermalink }}" />
 
-<!-- css>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous"-->
+<!--css-->
+
+<!--link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" media="all"-->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
 
 <!-- js-->
 {{ $built := resources.Get "js/main.js" | js.Build "main.js" }}

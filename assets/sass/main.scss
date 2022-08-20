@@ -6,10 +6,10 @@ body {
 
 /* variables */
 $font: {{ .Site.Params.font }};
-$baseColor: black;
+$baseColor: rgb(48, 44, 44);
 $baseHoverColor: red;
-$padding: 8px;
-$mobilePadding: 4px;
+$padding: 10px;
+$mobilePadding: 5px;
 
 nav {
   position: sticky;
@@ -18,18 +18,25 @@ nav {
   background-color: white;
   height: auto;
   box-shadow: 1px 1px 5px gray;
-  transition: height .35s ease;
+  font-size: larger;
+
+  /*No selection*/
+  -webkit-user-select: none; /* Webkit*/
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Chromium */
+
   
   label {
-    position: static;
+    position: absolute;
     float: right;
-    right: 1px;
+    right: 0;
     z-index: 1;
-    font-size: x-large;
-    padding: $mobilePadding;
+    font-size: xx-large;
+    padding-right: $padding;
     color: $baseColor;
+    }
   }
-}
 
 .area {
   position: relative;
@@ -37,10 +44,6 @@ nav {
   max-width: 100%;
   margin: 0 auto 0 auto;
 }
-
-
-
-/* Style */
 
 #menu {
     margin: 0;
@@ -56,16 +59,19 @@ nav {
   }
 
 #menu li:not(#title) :hover {
+  transition: .6s;
+  text-shadow: 0 0 10px rgb(255, 236, 236);
   color: $baseHoverColor;
 }
 
 #title {
-  font-size: x-large;
+  font-size: 1.5em;
   font-weight: bold;
 }
 
 @media all and (max-width: 640px) {
   #menu {
+    padding-left: $padding;
     li {
       padding: $mobilePadding;
     }
