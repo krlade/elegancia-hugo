@@ -1,0 +1,21 @@
+
+.content {
+    max-width: $threshold;
+    padding: $small_padding;
+    margin: $padding;
+    .date {
+        margin: 0;
+        padding-right: $padding;
+        float: right;
+
+    }
+    border-radius: $padding;
+    background-color: $article_bg_color;
+    .article-title {
+        font-size: larger;
+        text-decoration: none;
+    }
+}
+.separator {
+    display: block;
+}
