@@ -4,7 +4,7 @@
         {{ $pages := .Pages }}
         {{range $pages}}
             <div class="content">
-                <a href="{{lower .Title}}" class="article-title">{{.Title}}</a>
+                <a href="{{.Page.Permalink}}" class="article-title">{{.Title}}</a>
                 <h4 class="date">
                     {{.Date.Format "January 2, 2006"}}
                 </h4>

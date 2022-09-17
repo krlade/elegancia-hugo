@@ -1,21 +1,3 @@
-
-/* Load variables from config */
-{{range $x, $y := .Site.Params.Style}}
-  ${{$x}}: {{$y}};
-{{end}}
-
-/* Setup variables */
-$font: Monospace !default;
-$threshold: 1280px !default;
-$fg_color: rgb(44, 48, 44) !default;
-$bg_color: white !default;
-$fg_hover_color: red !default;
-$article_bg_color: rgba(216, 204, 204, 0.418) !default;
-$padding: 10px !default;
-$small_padding: $padding * 0.5;
-
-@import "_content";
-
 body {
   background-color: $bg_color;
   justify-content: center;
@@ -28,7 +10,7 @@ nav {
   width: 100%;
   background-color: $bg_color;
   height: auto;
-  box-shadow: 1px 1px 5px gray;
+  box-shadow: $box_shadow;
   font-size: larger;
 
   /*No selection*/
@@ -37,7 +19,6 @@ nav {
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Chromium */
 
-  
   label {
     position: absolute;
     float: right;
@@ -45,7 +26,7 @@ nav {
     z-index: 1;
     font-size: xx-large;
     padding-right: $padding;
-    color: $fg_color;
+    color: $accent_color;
     }
   }
 
@@ -64,15 +45,16 @@ nav {
       font-family: $font;
       a, i {
         text-decoration: none;
-        color: $fg_color;
+        color: $accent_color;
       }
     }
   }
 
 #menu li:not(#title) :hover {
   transition: .6s;
-  text-shadow: 0 0 10px rgb(255, 236, 236);
-  color: $fg_hover_color;
+  font-weight: bold;
+  text-shadow: $text-shadow;
+  color: $hover_color;
 }
 
 #title {
@@ -84,13 +66,12 @@ nav {
   #menu {
     padding-left: $padding;
     li {
-      padding: $small_padding;
+      padding: $smaller_padding;
     }
   }
   #menu li:not(#title), #hamburger { 
     display: none;
   }
-  
   #hamburger:checked ~ #menu li:not(#title) {
   display:block;
   animation: growDown 300ms ease-in-out forwards;
@@ -107,11 +88,9 @@ nav {
     100% {
         transform: scaleY(1)
     }
+  }
 }
 
-  
-
-}
 @media all and (min-width: 641px) {
   nav {
     padding: $padding 0 $padding 0;
@@ -124,13 +103,11 @@ nav {
       display:inline; 
     }
   }
-
   #title {
     position: absolute;
     left: $padding;
     top: -4px;
   }
-
   nav label, #hamburger {
     display: none;
   }
@@ -138,9 +115,10 @@ nav {
 
 div {
   p {
-    padding-top: 5px;
+    padding-top: $smaller_padding;
     margin: 0 auto 0 auto;
     width: $threshold;
+    color: $fg_color;
     max-width: 100%;
   }
   img {
@@ -148,13 +126,10 @@ div {
   }
 }
 
-.gray-bg {
-  background-color: gray;
-  /* debuging purposes*/
-  min-height: 50px;
-}
 .footer {
+  color: $fg_color;
   margin: 0 auto 0 auto;
   width: 100%;
 }
 
+@import "content"

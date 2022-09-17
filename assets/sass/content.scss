@@ -1,16 +1,16 @@
-
 .content {
+    color: $fg_color;
     max-width: $threshold;
-    padding: $small_padding;
+    padding: $smaller_padding;
     margin: $padding;
+    border-radius: $padding;
+    background-color: $card_color;
     .date {
         margin: 0;
         padding-right: $padding;
         float: right;
 
     }
-    border-radius: $padding;
-    background-color: $article_bg_color;
     .article-title {
         font-size: larger;
         text-decoration: none;

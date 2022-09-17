@@ -25,8 +25,24 @@
             </li>
             {{ end }}
             <li>
-                <i class="fa fa-moon-o" id="dark" aria-hidden="true"></i>
+                <i class="fa fa-moon-o" id="switch_theme" aria-hidden="true" onclick="switch_mode()"></i>
             </li>
         </ol>
     </div>
 </nav>
+<script>
+function switch_mode() {
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let icon = document.getElementById("switch_theme").classList;
+    let link = document.getElementsByTagName("link").item(darkModeMediaQuery);
+    if (icon[1] == "fa-moon-o") {
+        {{ $light := resources.Get "sass/_light.scss" | resources.ExecuteAsTemplate "light.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+        link.href="{{$light.RelPermalink}}"
+        icon.replace("fa-moon-o", "fa-sun-o");
+    } else {
+        {{ $dark := resources.Get "sass/_dark.scss" | resources.ExecuteAsTemplate "dark.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+        link.href="{{$dark.RelPermalink}}"
+        icon.replace("fa-sun-o", "fa-moon-o");
+    }
+}
+</script>
