@@ -1,10 +1,12 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
 
-{{ $styleTemplate := resources.Get "sass/main.scss" }}
-{{ $style :=  $styleTemplate | resources.ExecuteAsTemplate "cos.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
-<link id="load_theme" rel="stylesheet" href="{{ $style.RelPermalink }}" />
+{{ $light := resources.Get "sass/_light.scss" | resources.ExecuteAsTemplate "light.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+{{ $dark := resources.Get "sass/_dark.scss" | resources.ExecuteAsTemplate "dark.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)" href="{{ $light.RelPermalink }}" />
+<link rel="stylesheet" media="(prefers-color-scheme: dark)" href="{{ $dark.RelPermalink }}" />
 
 <!--css-->
 
@@ -15,6 +17,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
 
 <!-- js-->
-{{ $built := resources.Get "js/main.js" | js.Build "main.js" }}
+{{ $built := resources.Get "js/main.js"| resources.ExecuteAsTemplate "main.js" . | js.Build "main.js" }}
 <script type="text/javascript" src="{{ $built.RelPermalink }}" defer></script>
 

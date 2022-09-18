@@ -1,0 +1,16 @@
+{{ define "main" }}
+    <span class="separator"></span>
+    <div class="area">
+        {{ $pages := .Pages }}
+        {{range $pages}}
+            <div class="content">
+                <a href="{{.Page.Permalink}}" class="article-title">{{.Title}}</a>
+                <h4 class="date">
+                    {{.Date.Format "January 2, 2006"}}
+                </h4>
+                {{.Content}}
+                </p>
+            </div>
+        {{end}}
+    </div>
+{{end}}

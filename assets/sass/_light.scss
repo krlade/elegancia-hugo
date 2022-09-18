@@ -1,0 +1,23 @@
+
+/* Load variables from config */
+{{range $x, $y := .Site.Params.Style}}
+  ${{$x}}: {{index $y 0}};
+{{end}}
+
+/* Setup variables */
+$font: Monospace !default;
+$threshold: 1280px !default;
+$fg_color: #1e1e1e !default;
+$bg_color: #f1f1f1 !default;
+$accent_color: mediumaquamarine !default;
+$hover_color: $accent_color !default;
+$card_color: #e0e0e0  !default;
+$padding: 10px !default;
+
+$text-shadow: 0 0 10px #e1e1e1;
+$smaller_padding: $padding * 0.5;
+$bigger_padding: $padding * 2;
+$box_shadow: 1px 1px 5px gray;
+
+
+@import "main";

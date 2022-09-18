@@ -1,0 +1,21 @@
+.content {
+    color: $fg_color;
+    max-width: $threshold;
+    padding: $smaller_padding;
+    margin: $padding;
+    border-radius: $padding;
+    background-color: $card_color;
+    .date {
+        margin: 0;
+        padding-right: $padding;
+        float: right;
+
+    }
+    .article-title {
+        font-size: larger;
+        text-decoration: none;
+    }
+}
+.separator {
+    display: block;
+}

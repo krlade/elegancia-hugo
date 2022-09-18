@@ -1,23 +1,16 @@
 body {
-  background-color: white;
+  background-color: $bg_color;
   justify-content: center;
   margin: 0;
 }
-
-/* variables */
-$font: {{ .Site.Params.font }};
-$baseColor: rgb(48, 44, 44);
-$baseHoverColor: red;
-$padding: 10px;
-$mobilePadding: 5px;
 
 nav {
   position: sticky;
 	top: 0;
   width: 100%;
-  background-color: white;
+  background-color: $bg_color;
   height: auto;
-  box-shadow: 1px 1px 5px gray;
+  box-shadow: $box_shadow;
   font-size: larger;
 
   /*No selection*/
@@ -26,7 +19,6 @@ nav {
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Chromium */
 
-  
   label {
     position: absolute;
     float: right;
@@ -34,13 +26,13 @@ nav {
     z-index: 1;
     font-size: xx-large;
     padding-right: $padding;
-    color: $baseColor;
+    color: $accent_color;
     }
   }
 
 .area {
   position: relative;
-  width: 1280px;
+  width: $threshold;
   max-width: 100%;
   margin: 0 auto 0 auto;
 }
@@ -53,15 +45,16 @@ nav {
       font-family: $font;
       a, i {
         text-decoration: none;
-        color: $baseColor;
+        color: $accent_color;
       }
     }
   }
 
 #menu li:not(#title) :hover {
   transition: .6s;
-  text-shadow: 0 0 10px rgb(255, 236, 236);
-  color: $baseHoverColor;
+  font-weight: bold;
+  text-shadow: $text-shadow;
+  color: $hover_color;
 }
 
 #title {
@@ -73,13 +66,12 @@ nav {
   #menu {
     padding-left: $padding;
     li {
-      padding: $mobilePadding;
+      padding: $smaller_padding;
     }
   }
   #menu li:not(#title), #hamburger { 
     display: none;
   }
-  
   #hamburger:checked ~ #menu li:not(#title) {
   display:block;
   animation: growDown 300ms ease-in-out forwards;
@@ -96,11 +88,9 @@ nav {
     100% {
         transform: scaleY(1)
     }
+  }
 }
 
-  
-
-}
 @media all and (min-width: 641px) {
   nav {
     padding: $padding 0 $padding 0;
@@ -113,13 +103,11 @@ nav {
       display:inline; 
     }
   }
-
   #title {
     position: absolute;
     left: $padding;
     top: -4px;
   }
-
   nav label, #hamburger {
     display: none;
   }
@@ -127,9 +115,10 @@ nav {
 
 div {
   p {
-    padding-top: 5px;
+    padding-top: $smaller_padding;
     margin: 0 auto 0 auto;
-    width: 1280px;
+    width: $threshold;
+    color: $fg_color;
     max-width: 100%;
   }
   img {
@@ -137,13 +126,10 @@ div {
   }
 }
 
-.gray-bg {
-  background-color: gray;
-  /* debuging purposes*/
-  min-height: 50px;
-}
 .footer {
+  color: $fg_color;
   margin: 0 auto 0 auto;
   width: 100%;
 }
 
+@import "content"
