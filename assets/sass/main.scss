@@ -22,10 +22,10 @@ nav {
   label {
     position: absolute;
     float: right;
-    right: 0;
+    top: 0;
+    right: $padding;
     z-index: 1;
     font-size: xx-large;
-    padding-right: $padding;
     color: $accent_color;
     }
   }
@@ -50,7 +50,7 @@ nav {
     }
   }
 
-#menu li:not(#title) :hover {
+#menu li:not(#title):not(#theme_switch) :hover {
   transition: .6s;
   font-weight: bold;
   text-shadow: $text-shadow;
@@ -67,6 +67,9 @@ nav {
     padding-left: $padding;
     li {
       padding: $smaller_padding;
+    }
+    li:not(#title) {
+      font-size: larger;
     }
   }
   #menu li:not(#title), #hamburger { 
@@ -93,20 +96,24 @@ nav {
 
 @media all and (min-width: 641px) {
   nav {
-    padding: $padding 0 $padding 0;
+    padding: $smaller_padding 0 $smaller_padding 0;
   }
   #menu {
     display: flex;
     justify-content: flex-end;
-    li { 
+    li:not(#title) { 
       padding: $padding;
+      padding-left: $bigger_padding;
+      padding-right: 0;
+      font-size: 1.2em;
       display:inline; 
     }
   }
   #title {
     position: absolute;
-    left: $padding;
-    top: -4px;
+    padding: $smaller_padding * 1.25 0 0 0;
+    left: 0;
+    top: 0;
   }
   nav label, #hamburger {
     display: none;
